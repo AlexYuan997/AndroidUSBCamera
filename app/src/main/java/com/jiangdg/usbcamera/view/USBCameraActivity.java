@@ -34,6 +34,7 @@ import com.serenegiant.usb.common.AbstractUVCCameraHandler;
 import com.serenegiant.usb.encoder.RecordParams;
 import com.serenegiant.usb.widget.CameraViewInterface;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -243,6 +244,13 @@ public class USBCameraActivity extends AppCompatActivity implements CameraDialog
                 }
                 if (!mCameraHelper.isPushing()) {
                     String videoPath = UVCCameraHelper.ROOT_PATH + System.currentTimeMillis();
+
+                    File file=new File(videoPath);
+                    if (!file.isDirectory()){
+                        file.mkdirs();
+                    }
+
+
                     FileUtils.createfile(FileUtils.ROOT_PATH + "test666.h264");
                     // if you want to record,please create RecordParams like this
                     RecordParams params = new RecordParams();
